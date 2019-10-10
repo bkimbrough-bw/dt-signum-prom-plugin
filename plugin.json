@@ -1,0 +1,632 @@
+{
+  "name": "custom.python.signum_prom_plugin",
+  "version": "0.1",
+  "type": "python",
+  "entity": "PROCESS_GROUP_INSTANCE",
+  "metricGroup": "signum_prom",
+  "processTypeNames": [
+    "JAVA"
+  ],
+  "technologies": [
+    "JAVA"
+  ],
+  "source": {
+    "package": "signum_prometheus_scraper",
+    "className": "SignumPrometheusScraper",
+    "install_requires": [
+      "requests==2.22.0",
+      "prometheus_client==0.7.1"
+    ],
+    "activation": "Singleton",
+    "activation_name_pattern": "com\\.bandwidth\\.identity\\.signum\\.SignumApplication*"
+  },
+  "configUI": {
+    "displayName": "Signum Prometheus Plugin"
+  },
+  "metrics": [
+    {
+      "timeseries": {
+        "key": "process_cpu_usage",
+        "unit": "Percent",
+        "displayname": "Recent CPU usage"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "process_files_open_files",
+        "unit": "Count",
+        "displayname": "Open file descriptor count"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "jvm_classes_unloaded_classes",
+        "unit": "Count",
+        "displayname": "Number of classes unloaded"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "executor_pool_size_threads",
+        "unit": "Count",
+        "dimensions": [
+          "name"
+        ],
+        "displayname": "Number of threads in pool"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "resilience4j_circuitbreaker_calls",
+        "unit": "Count",
+        "dimensions": [
+          "kind",
+          "name"
+        ],
+        "displayname": "Total number of not permitted calls"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "tomcat_sessions_created_sessions",
+        "unit": "Count",
+        "displayname": "Number of Tomcat sessions"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "resilience4j_circuitbreaker_state",
+        "unit": "Count",
+        "dimensions": [
+          "name",
+          "state"
+        ],
+        "displayname": "States of the circuit breaker"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "process_start_time_seconds",
+        "unit": "Second",
+        "displayname": "Start time of the process since unix epoch"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "jvm_classes_loaded_classes",
+        "unit": "Count",
+        "displayname": "The number of classes that are currently loaded in the Java virtual machine"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "executor_active_threads",
+        "unit": "Count",
+        "dimensions": [
+          "name"
+        ],
+        "displayname": "The approximate number of threads that are actively executing tasks"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "jvm_memory_committed_bytes",
+        "unit": "Byte",
+        "dimensions": [
+          "area",
+          "id"
+        ],
+        "displayname": "The amount of memory in bytes that is committed for the Java virtual machine to use"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "method_timed_seconds",
+        "unit": "Second",
+        "dimensions": [
+          "class",
+          "exception",
+          "method",
+          "quantile"
+        ],
+        "displayname": "Method timed seconds"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "method_timed_seconds_count",
+        "unit": "Count",
+        "dimensions": [
+          "class",
+          "exception",
+          "method"
+        ],
+        "displayname": "Method timed seconds count"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "method_timed_seconds_sum",
+        "unit": "Second",
+        "dimensions": [
+          "class",
+          "exception",
+          "method"
+        ],
+        "displayname": "Method timed seconds sum"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "method_timed_seconds_max",
+        "unit": "Second",
+        "dimensions": [
+          "class",
+          "exception",
+          "method"
+        ],
+        "displayname": "Method timed seconds max"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "tomcat_global_request_max_seconds",
+        "unit": "Second",
+        "dimensions": [
+          "name"
+        ],
+        "displayname": "Tomcat global request max seconds"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "tomcat_sessions_alive_max_seconds",
+        "unit": "Second",
+        "displayname": "Tomcat sessions alive max seconds"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "http_server_requests_seconds",
+        "unit": "Second",
+        "dimensions": [
+          "exception",
+          "method",
+          "outcome",
+          "status",
+          "uri",
+          "quantile",
+          "le"
+        ],
+        "displayname": "Http server requests seconds"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "http_server_requests_seconds_bucket",
+        "unit": "Second",
+        "dimensions": [
+          "exception",
+          "method",
+          "outcome",
+          "status",
+          "uri",
+          "le"
+        ],
+        "displayname": "Http server requests seconds bucket"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "http_server_requests_seconds_count",
+        "unit": "Second",
+        "dimensions": [
+          "exception",
+          "method",
+          "outcome",
+          "status",
+          "uri"
+        ],
+        "displayname": "Http server requests seconds bucket count"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "http_server_requests_seconds_sum",
+        "unit": "Second",
+        "dimensions": [
+          "exception",
+          "method",
+          "outcome",
+          "status",
+          "uri"
+        ],
+        "displayname": "Http server requests seconds bucket sum"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "http_server_requests_seconds_max",
+        "unit": "Second",
+        "dimensions": [
+          "exception",
+          "method",
+          "outcome",
+          "status",
+          "uri"
+        ],
+        "displayname": "Http server requests seconds max"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "jvm_threads_daemon_threads",
+        "unit": "Count",
+        "displayname": "The current number of live daemon threads"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "tomcat_global_received_bytes",
+        "unit": "Byte",
+        "dimensions": [
+          "name"
+        ],
+        "displayname": "Tomcat global received bytes total"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "tomcat_sessions_active_max_sessions",
+        "unit": "Count",
+        "displayname": "Tomcat sessions active max sessions"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "tomcat_sessions_expired_sessions",
+        "unit": "Count",
+        "displayname": "Tomcat sessions expired sessions total"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "executor_completed_tasks",
+        "unit": "Count",
+        "dimensions": [
+          "name"
+        ],
+        "displayname": "Number of tasks that have completed execution"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "system_cpu_count",
+        "unit": "Count",
+        "displayname": "The number of processors available to the Java virtual machine"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "tomcat_sessions_active_current_sessions",
+        "unit": "Count",
+        "displayname": "Tomcat sessions active current sessions"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "jvm_gc_max_data_size_bytes",
+        "unit": "Byte",
+        "displayname": "Max size of old generation memory pool"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "jvm_buffer_total_capacity_bytes",
+        "unit": "Byte",
+        "dimensions": [
+          "id"
+        ],
+        "displayname": "An estimate of the total capacity of the buffers in this pool"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "system_cpu_usage",
+        "unit": "Percent",
+        "displayname": "The \"recent cpu usage\" for the whole system"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "process_files_max_files",
+        "unit": "Count",
+        "displayname": "The maximum file descriptor count"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "tomcat_threads_current_threads",
+        "unit": "Count",
+        "dimensions": [
+          "name"
+        ],
+        "displayname": "Tomcat threads current threads"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "jvm_buffer_memory_used_bytes",
+        "unit": "Byte",
+        "dimensions": [
+          "id"
+        ],
+        "displayname": "An estimate of the memory that the Java virtual machine is using for this buffer pool"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "tomcat_threads_busy_threads",
+        "unit": "Count",
+        "dimensions": [
+          "name"
+        ],
+        "displayname": "Tomcat threads busy threads"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "tomcat_global_request_seconds",
+        "unit": "Second",
+        "dimensions": [
+          "name"
+        ],
+        "displayname": "Tomcat global request seconds"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "tomcat_sessions_rejected_sessions",
+        "unit": "Count",
+        "displayname": "Tomcat sessions rejected sessions total"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "system_load_average_1m",
+        "unit": "Percent",
+        "displayname": "The sum of the number of runnable entities queued to available processors and the number of runnable entities running on the available processors averaged over a period of time"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "jvm_buffer_count_buffers",
+        "unit": "Count",
+        "dimensions": [
+          "id"
+        ],
+        "displayname": "An estimate of the number of buffers in the pool"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "resilience4j_circuitbreaker_failure_rate",
+        "unit": "Count",
+        "dimensions": [
+          "name"
+        ],
+        "displayname": "The failure rate of the circuit breaker"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "resilience4j_circuitbreaker_buffered_calls",
+        "unit": "Count",
+        "dimensions": [
+          "kind",
+          "name"
+        ],
+        "displayname": "The number of buffered failed calls stored in the ring buffer"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "resilience4j_retry_calls",
+        "unit": "Count",
+        "dimensions": [
+          "kind",
+          "name"
+        ],
+        "displayname": "The number of successful calls without a retry attempt"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "jvm_threads_peak_threads",
+        "unit": "Count",
+        "displayname": "The peak live thread count since the Java virtual machine started or peak was reset"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "resilience4j_circuitbreaker_calls_seconds",
+        "unit": "Second",
+        "dimensions": [
+          "kind",
+          "name"
+        ],
+        "displayname": "Total number of successful calls"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "resilience4j_circuitbreaker_calls_seconds_max",
+        "unit": "Second",
+        "dimensions": [
+          "kind",
+          "name"
+        ],
+        "displayname": "Maximum number of successful calls"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "resilience4j_circuitbreaker_max_buffered_calls",
+        "unit": "Count",
+        "dimensions": [
+          "name"
+        ],
+        "displayname": "The maximum number of buffered calls which can be stored in the ring buffer"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "tomcat_global_sent_bytes",
+        "unit": "Byte",
+        "dimensions": [
+          "name"
+        ],
+        "displayname": "Tomcat global sent_bytes total"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "jvm_gc_pause_seconds",
+        "unit": "Second",
+        "dimensions": [
+          "action",
+          "cause",
+          "quantile"
+        ],
+        "displayname": "Time spent in GC pause"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "jvm_gc_pause_seconds_max",
+        "unit": "Second",
+        "dimensions": [
+          "action",
+          "cause"
+        ],
+        "displayname": "Time spent in GC pause"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "jvm_threads_live_threads",
+        "unit": "Count",
+        "displayname": "The current number of live threads including both daemon and non-daemon threads"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "executor_queued_tasks",
+        "unit": "Count",
+        "dimensions": [
+          "name"
+        ],
+        "displayname": "The approximate number of tasks that are queued for execution"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "jvm_gc_live_data_size_bytes",
+        "unit": "Byte",
+        "displayname": "Size of old generation memory pool after a full GC"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "executor_seconds",
+        "unit": "Second",
+        "dimensions": [
+          "name"
+        ],
+        "displayname": "Executor seconds"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "executor_seconds_max",
+        "unit": "Second",
+        "dimensions": [
+          "name"
+        ],
+        "displayname": "Executor seconds max"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "jvm_threads_states_threads",
+        "unit": "Count",
+        "dimensions": [
+          "state"
+        ],
+        "displayname": "The current number of threads having NEW state"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "jvm_gc_memory_promoted_bytes",
+        "unit": "Byte",
+        "displayname": "Count of positive increases in the size of the old generation memory pool before GC to after GC"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "logback_events",
+        "unit": "Count",
+        "dimensions": [
+          "level"
+        ],
+        "displayname": "Number of error level events that made it to the logs"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "jvm_memory_max_bytes",
+        "unit": "Byte",
+        "dimensions": [
+          "area",
+          "id"
+        ],
+        "displayname": "The maximum amount of memory in bytes that can be used for memory management"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "tomcat_global_error",
+        "unit": "Count",
+        "dimensions": [
+          "name"
+        ],
+        "displayname": "Tomcat global error total"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "process_uptime_seconds",
+        "unit": "Second",
+        "displayname": "The uptime of the Java virtual machine"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "jvm_gc_memory_allocated_bytes",
+        "unit": "Byte",
+        "displayname": "Incremented for an increase in the size of the young generation memory pool after one GC to before the next"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "tomcat_threads_config_max_threads",
+        "unit": "Count",
+        "dimensions": [
+          "name"
+        ],
+        "displayname": "Tomcat threads config max threads"
+      }
+    }
+  ]
+}

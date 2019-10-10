@@ -1,0 +1,3 @@
+requests==2.22.0
+prometheus_client==0.7.1
+/home/bkimbrough/bin/dynatrace-plugin-sdk/plugin_sdk-1.177.204.20191010.30448-py3-none-any.whl
